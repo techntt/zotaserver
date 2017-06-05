@@ -29,9 +29,11 @@ public class MessCommand {
 				handlerCMD(cmd, content);
 			}else if(type.equals("mess")){
 				handlerMess(cmd, content);
+			}else if(type.equals("game")){
+				
 			}
-		}else{
-			// wrong message
+		}else{ // wrong message
+			
 		}
 	}
 	
@@ -133,5 +135,25 @@ public class MessCommand {
 		}
 	}
 	
+	private void handlerGame(String player,String mess){
+		if(mess.contains("[join]")){
+			manager.listPlayer.put(player, sender);
+		}else if(mess.contains("[out]")){
+			manager.listPlayer.remove(player);
+		}else if(mess.contains("[move]")){  // [move]<>()
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for (User user : manager.listPlayer.values()) {
+						if(user!=sender){
+							user.sendMessage(Common.newMess("game", player, mess));
+						}
+					}
+					
+				}
+			}).start();
+		}
+	}
 	
 }
