@@ -136,9 +136,10 @@ public class MessCommand {
 	}
 	
 	private void handlerGame(String player,String mess){
-		if(mess.contains("[join]")){
+		if(manager.listPlayer.containsKey(player)){
 			manager.listPlayer.put(player, sender);
-		}else if(mess.contains("[out]")){
+		}
+		if(mess.contains("[out]")){
 			manager.listPlayer.remove(player);
 		}else if(mess.contains("[move]")){  // [move]<>()
 			System.out.println(mess);
@@ -155,6 +156,5 @@ public class MessCommand {
 				}
 			}).start();
 		}
-	}
-	
+	}	
 }
