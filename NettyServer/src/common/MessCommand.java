@@ -30,7 +30,7 @@ public class MessCommand {
 			}else if(type.equals("mess")){
 				handlerMess(cmd, content);
 			}else if(type.equals("game")){
-				
+				handlerGame(cmd, content);
 			}
 		}else{ // wrong message
 			
@@ -141,6 +141,7 @@ public class MessCommand {
 		}else if(mess.contains("[out]")){
 			manager.listPlayer.remove(player);
 		}else if(mess.contains("[move]")){  // [move]<>()
+			System.out.println(mess);
 			new Thread(new Runnable() {
 				
 				@Override
