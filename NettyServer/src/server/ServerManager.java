@@ -15,6 +15,7 @@ public class ServerManager {
 	public LinkedHashMap<SocketAddress, User> listUser;
 	public LinkedHashMap<String, User> listName;
 	public LinkedHashMap<String, Group> listGroup;
+	public LinkedHashMap<String, User> listPlayer;
 	
 	public ServerManager(NettyServer server){
 		this.server=server;
@@ -22,6 +23,7 @@ public class ServerManager {
 		listUser=new LinkedHashMap<SocketAddress,User>();
 		listName=new LinkedHashMap<String,User>();
 		listGroup=new LinkedHashMap<String,Group>();
+		listPlayer=new LinkedHashMap<String,User>();
 	}
 
 	public void nofifyToAll() {
